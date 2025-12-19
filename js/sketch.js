@@ -325,17 +325,16 @@ function effet3(){ //LA MER
           else if(filtre>0.478){
             fill(184, 63, 54)
             square(x,y,grille)
-            textSize(20)
-            text('O',x-15,y-8)
+            
 
 
           }else if(filtre>0.45){
             
-            fill(200,78,73)
+            fill(255)
             textSize(16)
             text('o',x,y)
             
-            fill(200,82,50)
+            fill(255)
             textSize(16)
             text('o',x+5,y+5)
 
@@ -348,7 +347,7 @@ function effet3(){ //LA MER
             
           }else if(filtre>0.43){
             textSize(16)
-            fill(185,100,100)
+            fill(255)
             text('o',x,y)
             text('o',x+7,y+7)
             fill(192,90,100)
@@ -441,20 +440,41 @@ function effet4(){  // SABLE SOUS L'EAU
          let filtre = noise(paramX,paramY,temps/4);
           if (filtre>0.57){
             fill(163, 29, 37)
-            square(x,y,grille)
+            circle(x,y,grille*2)
             //blendMode(REMOVE)
           //fill(192,90,75)
            //square(x,y,grille)
             //blendMode(BLEND)
+            let ecart = 250;
+            noFill()
+            beginShape();
+    
+            strokeWeight(4);
+            noFill();
+            stroke(77, 21, 46,0.1)
+
+            for (let x = marge; x < width - marge; x += grille) {
+
+              let paramX = x * zoom;
+              let paramY = y * zoom;
+
+              let s = noise(paramX+15, paramY+15, temps/2);
+              let noiseMap = map(s, 0, 1, -ecart, ecart);
+
+              vertex(x, y + noiseMap);
+            }
+            endShape();
+
+
                        
           }else if(filtre>0.55){
             fill(163, 24, 42)
-            square(x,y,grille)
+            circle(x,y,grille*2)
             
             
           }else if (filtre>0.53){  //•••
             fill(154, 18, 41)
-            square(x,y,grille)
+            circle(x,y,grille*2)
             
           }
           // if (filtre>0.5){
@@ -465,15 +485,15 @@ function effet4(){  // SABLE SOUS L'EAU
           else if(filtre>0.45){
             
             fill(163, 29, 37)
-            square(x,y,grille)
+            circle(x,y,grille*2)
             
             
             
 
 
           }else if(filtre>0.44){  // CLAIR
-            fill(65, 65, 85)
-            square(x,y,grille)
+            fill(65, 65, 85,0.8)
+            circle(x,y,grille*2)
             textSize(30)
             fill(65, 65, 85, 0.4)
             text('*',x,y)
@@ -486,19 +506,19 @@ function effet4(){  // SABLE SOUS L'EAU
             //text('o',x,y)
             //text('o',x+7,y+7)
             fill(60, 100, 96)
-            square(x,y,grille)
+            circle(x,y,grille*2)
 
           }else if(filtre>0.4){  //•••
             fill(155, 22, 49)
-            square(x,y,grille)
+            circle(x,y,grille*2)
          
           }else if(filtre>0.35){
             fill(163, 24, 42)
-            square(x,y,grille)
+            circle(x,y,grille*2)
           }
             else{    //couleur foncé!!!
             fill(163, 29, 37)
-            square(x,y,grille)
+            circle(x,y,grille*2)
             let ecart = 250;
             noFill()
             beginShape();
